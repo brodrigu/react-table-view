@@ -5,6 +5,7 @@ import React from 'react'
  * A simple sortable table component.
 **/
 let TableView = React.createClass({
+  displayName: 'TableView',
   getInitialState: function(){
      return {
        data: this.props.data,
@@ -102,20 +103,20 @@ let TableView = React.createClass({
             <tbody>
 
                {
-                this.props.data.map(function(d) {
-                  return <tr key={d.id}>{
+                this.props.data.map(function(d, i) {
+                  var key = d.id || 'item' + i;
+                  return <tr key={key}>{
                       fields.map(function(f) {
                         if(columns && columns[f]) {
-                          return <td key={d.id + '_' + f}>{columns[f](d)}</td>
+                          return <td key={key + '_' + f}>{columns[f](d)}</td>
                         } else {
-                          return <td key={d.id + '_' + f}>{d[f]}</td>
+                          return <td key={key + '_' + f}>{d[f]}</td>
                         }
                       })
                   }
                   </tr>
                })
              }
-
 
             </tbody>
         </table>

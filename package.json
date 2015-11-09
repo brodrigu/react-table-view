@@ -36,7 +36,10 @@
     "build": "babel --presets react,es2015  src --out-dir lib",
     "example": "webpack --config ./example/webpack.config.js",
     "serve": "node ./example/server.js",
-    "start": "npm run example && npm run serve"
+    "start": "npm run example && npm run serve",
+    "check-build": "([ ! -d 'lib' ] && npm run build ) || true",
+    "prepublish": "npm run build",
+    "postinstall": "npm run check-build",
   },
   "keywords": [
     "react",
