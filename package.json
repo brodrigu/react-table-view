@@ -39,7 +39,7 @@
     "start": "npm run example && npm run serve",
     "check-build": "([ ! -d 'lib' ] && npm run build ) || true",
     "prepublish": "npm run build",
-    "postinstall": "npm run check-build",
+    "postinstall": "npm run check-build"
   },
   "keywords": [
     "react",
